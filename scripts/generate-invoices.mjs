@@ -7,6 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const projectRoot = path.resolve(__dirname, '..');
 const outputDir = path.join(projectRoot, 'public', 'invoices');
+const FIXED_METADATA_DATE = new Date('2026-01-01T00:00:00.000Z');
 
 const FIELD_ORDER = [
   'Invoice Number',
@@ -89,6 +90,12 @@ function buildInvoiceData(index) {
 
 async function createInvoicePdf(invoice) {
   const pdfDoc = await PDFDocument.create();
+  pdfDoc.setTitle(`Invoice ${invoice.fields['Invoice Number']}`);
+  pdfDoc.setAuthor(invoice.fields['Vendor Name']);
+  pdfDoc.setCreator('pdf-highlighter');
+  pdfDoc.setProducer('pdf-highlighter');
+  pdfDoc.setCreationDate(FIXED_METADATA_DATE);
+  pdfDoc.setModificationDate(FIXED_METADATA_DATE);
   const page = pdfDoc.addPage([612, 792]);
   const bold = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
   const regular = await pdfDoc.embedFont(StandardFonts.Helvetica);
