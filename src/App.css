@@ -1,0 +1,321 @@
+.app-shell {
+  width: min(1360px, 100% - 2rem);
+  margin: 1.2rem auto 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.app-header {
+  border-radius: 20px;
+  padding: 1.2rem 1.3rem;
+  background: linear-gradient(125deg, rgba(14, 29, 56, 0.98), rgba(33, 56, 98, 0.95));
+  color: #f5f8ff;
+  box-shadow: 0 16px 36px rgba(20, 35, 69, 0.24);
+}
+
+.eyebrow {
+  margin: 0;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  font-family: 'IBM Plex Mono', monospace;
+  color: #9bc3ff;
+  font-size: 0.72rem;
+}
+
+.app-header h1 {
+  margin: 0.35rem 0;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  line-height: 1.1;
+}
+
+.subtitle {
+  margin: 0;
+  max-width: 72ch;
+  color: rgba(238, 243, 255, 0.9);
+}
+
+.carousel-section,
+.panel {
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(134, 152, 182, 0.3);
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(37, 57, 89, 0.11);
+  backdrop-filter: blur(6px);
+}
+
+.carousel-section {
+  padding: 0.95rem;
+}
+
+.section-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.section-title-row h2,
+.panel-header h2 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.section-title-row span {
+  font-family: 'IBM Plex Mono', monospace;
+  color: #5a6b86;
+  font-size: 0.78rem;
+}
+
+.invoice-carousel {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(210px, 1fr);
+  gap: 0.75rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  scroll-snap-type: x mandatory;
+}
+
+.invoice-card {
+  border: 1px solid rgba(132, 151, 177, 0.45);
+  border-radius: 14px;
+  padding: 0.8rem;
+  text-align: left;
+  background: linear-gradient(145deg, rgba(248, 251, 255, 0.95), rgba(233, 241, 250, 0.82));
+  cursor: pointer;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+  scroll-snap-align: start;
+  animation: rise 360ms ease both;
+}
+
+.invoice-card:hover {
+  transform: translateY(-2px);
+  border-color: #4c79b7;
+  box-shadow: 0 8px 16px rgba(54, 88, 138, 0.17);
+}
+
+.invoice-card.selected {
+  border-color: #174e95;
+  background: linear-gradient(140deg, rgba(25, 74, 141, 0.12), rgba(39, 112, 202, 0.06));
+}
+
+.invoice-id {
+  margin: 0;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.85rem;
+  color: #11386d;
+}
+
+.invoice-row {
+  margin: 0.42rem 0;
+  font-size: 0.9rem;
+  color: #243245;
+}
+
+.invoice-bottom-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  color: #3f4f67;
+  font-size: 0.8rem;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 1rem;
+  min-height: 580px;
+}
+
+.panel {
+  padding: 0.95rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.8rem;
+}
+
+.download-button {
+  text-decoration: none;
+  border: 1px solid rgba(23, 75, 144, 0.3);
+  border-radius: 999px;
+  padding: 0.42rem 0.85rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #0f3f83;
+  background: rgba(194, 217, 247, 0.42);
+}
+
+.download-button:hover {
+  background: rgba(152, 192, 240, 0.54);
+}
+
+.status-pill {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.76rem;
+  color: #3e5981;
+  background: rgba(175, 195, 224, 0.33);
+  border-radius: 999px;
+  padding: 0.2rem 0.45rem;
+}
+
+.pdf-container {
+  min-height: 520px;
+  width: 100%;
+  display: grid;
+  place-items: start center;
+  overflow: auto;
+  border-radius: 12px;
+  background:
+    linear-gradient(130deg, rgba(236, 243, 252, 0.95), rgba(228, 238, 248, 0.82));
+  border: 1px solid rgba(123, 145, 173, 0.22);
+  padding: 0.8rem;
+}
+
+.page-stage {
+  position: relative;
+  max-width: 100%;
+}
+
+.page-stage .react-pdf__Page {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 14px 22px rgba(36, 56, 86, 0.2);
+}
+
+.page-stage canvas {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+.field-highlight {
+  position: absolute;
+  border-radius: 8px;
+  border: 2px solid rgba(251, 154, 21, 0.95);
+  background: rgba(255, 178, 69, 0.3);
+  box-shadow: 0 0 0 4px rgba(255, 177, 52, 0.17);
+  animation: pulse 420ms ease;
+  pointer-events: none;
+}
+
+.error-state,
+.empty-state {
+  margin: 0.25rem 0;
+  color: #4e5b6f;
+  font-size: 0.92rem;
+}
+
+.error-state {
+  color: #84213d;
+}
+
+.field-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.56rem;
+  overflow: auto;
+}
+
+.field-list li {
+  animation: rise 260ms ease both;
+}
+
+.field-item {
+  width: 100%;
+  border: 1px solid rgba(142, 159, 185, 0.45);
+  border-radius: 12px;
+  background: rgba(248, 251, 255, 0.95);
+  display: grid;
+  gap: 0.2rem;
+  padding: 0.68rem 0.72rem;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+
+.field-item:hover {
+  border-color: #3e6fab;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(55, 85, 130, 0.18);
+}
+
+.field-item.active {
+  border-color: #f28d19;
+  background: linear-gradient(160deg, rgba(255, 244, 226, 0.95), rgba(255, 251, 242, 0.96));
+}
+
+.field-label {
+  font-size: 0.78rem;
+  font-family: 'IBM Plex Mono', monospace;
+  color: #4d607c;
+}
+
+.field-value {
+  font-size: 1rem;
+  color: #172233;
+  font-weight: 700;
+  word-break: break-word;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 980px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pdf-container {
+    min-height: 420px;
+  }
+}
+
+@media (max-width: 620px) {
+  .app-shell {
+    width: calc(100% - 1rem);
+    margin-top: 0.7rem;
+  }
+
+  .app-header {
+    padding: 1rem;
+  }
+
+  .panel,
+  .carousel-section {
+    padding: 0.75rem;
+  }
+
+  .invoice-carousel {
+    grid-auto-columns: minmax(185px, 1fr);
+  }
+}
