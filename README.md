@@ -13,6 +13,59 @@ React demo that loads invoice PDFs, extracts key fields, and highlights each ext
 - Download button for the currently selected invoice
 - GitHub Pages ready (with GitHub Actions deployment workflow)
 
+## Concepts this repository can teach you
+
+### 1. PDF rendering with `react-pdf` + `pdf.js`
+
+- How to render PDFs in React using `Document` and `Page`.
+- How to configure and version-match the PDF worker (`pdfjs-dist`) so the viewer works correctly.
+- Where to look:
+  - `src/components/PdfViewerPanel.tsx`
+  - `src/App.tsx`
+
+### 2. PDF field parsing and coordinate extraction
+
+- How to read text content from PDFs (`getTextContent`) and normalize text items.
+- How to extract values with a two-pass strategy:
+  - Ordered label matching (e.g. `Invoice Number`, `Due Date`, `Total Due`).
+  - Generic fallback (`Label: Value`) parsing for non-template documents.
+- How to map PDF-space coordinates to screen-space overlay coordinates for highlighting.
+- Validation criteria for uploaded files:
+  - PDF format only
+  - one-page only
+  - invoice-like keyword heuristic
+- Where to look:
+  - `src/utils/pdfExtraction.ts`
+  - `src/App.tsx`
+
+### 3. React component architecture and state orchestration
+
+- How to keep orchestration in one container (`App.tsx`) while splitting UI into focused components.
+- How to structure shared types and utility modules for readability and reuse.
+- Where to look:
+  - `src/components/`
+  - `src/types.ts`
+  - `src/App.tsx`
+
+### 4. Reusing existing components built by others
+
+- How to integrate pre-built component libraries (MUI) instead of building every UI piece from scratch.
+- In this project, MUI is used for common UI primitives like cards, dialogs, buttons, icons, and layout.
+- Why this matters: faster delivery, better accessibility defaults, and easier consistency.
+- Where to look:
+  - `src/components/InvoiceCarousel.tsx`
+  - `src/components/UploadInvoiceDialog.tsx`
+  - `src/components/FieldsPanel.tsx`
+
+### 5. Shipping a static React app to GitHub Pages
+
+- How to configure Vite base path handling for Pages deployments.
+- How to use GitHub Actions to build and deploy automatically on `main`.
+- Where to look:
+  - `.github/workflows/deploy.yml`
+  - `vite.config.js`
+  - `package.json` scripts (`build`, `deploy`)
+
 ## Local setup
 
 ```bash
@@ -58,4 +111,3 @@ If you prefer `gh-pages` branch deployment from local machine:
 ```bash
 npm run deploy
 ```
-
